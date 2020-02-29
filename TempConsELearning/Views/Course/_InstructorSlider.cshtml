@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TempConsELearning.Models.Instructor>
+
+<link href="~/Content/MaterialiseCss/materialize.css" rel="stylesheet" />
+<script src="~/Content/MaterialiseCss/materialize.js"></script>
+<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<script src="~/Content/MaterialiseCss/materialize.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('.slider').slider();
+    });
+</script>
+
+    <div class="row">
+          @foreach (var item in Model)
+              {
+                  if (item != null)
+                  {
+
+                    <div class="col s4">
+                        <div class="card" style="background-color:#ffffff" >
+                            <div class="card-content" >
+
+                                <div class="row">
+
+                                    <div class="col s3">
+                                        <img src=@Url.Content(item.Image) width="60px;" height="60px;" class="circle responsive-img" />
+                                    </div>
+
+                                    <div class="col s9" >
+                                        <h6 style="color:dodgerblue; font-family:'Bookman Old Style'; font-size:x-large;">
+                                            @item.InstructorName
+                                        </h6>
+                                        @for (int i = 0; i < item.Rating; i++)
+                                        {
+                                            <i class="small material-icons">star</i>
+                                        }
+                                    </div>
+                                </div>
+                                <p class="rounded" style="font-size:medium;">
+                                    @item.About
+                                </p>
+                                <br />
+                                <h6>Number OF Course Taught: @item.NoOfCoursesTaught</h6>
+                                @for (int i = 0; i < item.NoOfCoursesTaught; i++)
+                                {
+                                    <i class="small material-icons">event</i>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                  }
+              }
+           
+        </div>

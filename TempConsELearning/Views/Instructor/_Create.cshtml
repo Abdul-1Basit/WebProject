@@ -1,0 +1,145 @@
+﻿@model TempConsELearning.Models.Course
+
+
+
+<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<script src="~/Content/MaterialiseCss/materialize.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+
+</script>
+<div class="body-content" style="padding-left:7px; padding-right:7px;">
+    @using (Html.BeginForm("_Create", "Instructor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Course</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CourseTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CourseTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CourseDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+               
+                    @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
+                  <div class="col-md-10">
+                    @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                </div>
+               
+                
+                 @*@Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+                *@               
+                                                    @*@Html.DropDownListFor(model => model.Language, new[] { new SelectListItem() { Text = "English", Value = "English" }, new SelectListItem() { Text = "Urdu", Value = "Urdu" } })
+        @Html.EnumDropDownListFor(model=>model.ld)
+                                         </div>    *@
+               
+
+
+
+               
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ratings, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ratings, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ratings, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+               
+                @Html.LabelFor(model => model.CourseFieldCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CourseFieldCategory, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CourseFieldCategory, "", new { @class = "text-danger" })
+                </div>
+
+
+
+               @* @Html.DropDownListFor(model=>model.CourseFieldCategory,new SelectList(Model.ld),"Select Category")
+            *@  @*@Html.DropDownListFor(model => model.CourseCategory, model => Model.CourseDescription )*@ 
+                     @*<div class="input-field col s12">
+    <select name="CourseCategory">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="Development">Development</option>
+        <option value="Business">Business</option>
+        <option value="IT & Software">IT & Software</option>
+        <option value="Office Productivity">Office Productivity</option>
+        <option value="Personal Development">Personal Development</option>
+        <option value="Design">Design</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Photography">Photography</option>
+        <option value="Health & Fitness">Health & Fitness</option>
+        <option value="Teacher Training">Teacher Training</option>
+        <option value="Music">Music</option>
+        <option value="Academics">Academics</option>
+        <option value="Language">Language</option>
+        <option value="Test Prep">Test Prep</option>
+                         </div>
+                    </select>*@ 
+
+                
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CourseCategory, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CourseCategory, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" id="ImageFile" name="ImageFile" class="file-path validate" required />
+             
+                    </div>
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

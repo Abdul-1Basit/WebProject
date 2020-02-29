@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/MaterialiseCss/materialize.js"></script>
+<script src="~/Content/MaterialiseCss/materialize.min.js"></script><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script>
+ $(document).ready(function(){
+     $('.tabs').tabs();
+     //$.ajax({
+     //    type: 'GET',
+     //    url: '/Instructor/_MyCourses',
+     //    success: function (result) {
+     //        $('.dataClass').data(result);
+     //       // alert("GOT DATA");
+     //    },
+     //    error: function () {
+     //        alert("Default data Load Error ");
+     //    }
+
+     //});
+     
+ });
+</script>
+
+
+<div class="row">
+   <h3>Instructor's Profile Menu</h3>
+     <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s4 active" ><a  id="alpha">My Courses</a></li>
+       
+            <li class="tab col s4" > <a id="beta">Offer New Course</a> </li>
+            <li class="tab col s4"><a id="gama">Account Information</a></li>
+        </ul>
+    </div>
+    
+    <div class="dataClass">
+        @Html.Action("_MyCourses", "Instructor")
+    </div>
+    </div>
+<script>
+
+    $("#alpha").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Instructor/_MyCourses',
+            success: function (result) {
+                $(".dataClass").html(result);
+              //  alert("GOT DATA");
+            },
+            error: function () {
+                alert("something went wrong With Tab3 Ajax Call");
+            }
+
+        });
+
+    });
+
+
+
+
+   $("#beta").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Instructor/_Create',
+            success: function (result) {
+                $(".dataClass").html(result);
+                //alert("GOT DATA");
+            },
+            error: function () {
+                alert("something went wrong With Tab3 Ajax Call");
+            }
+
+        });
+
+    });
+
+
+    $("#gama").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Instructor/_InstructorDetails',
+            success: function (result) {
+                $(".dataClass").html(result);
+                //alert("GOT DATA");
+            },
+            error: function () {
+                alert("something went wrong With Tab3 Ajax Call");
+            }
+
+        });
+
+    });
+
+
+
+
+</script>

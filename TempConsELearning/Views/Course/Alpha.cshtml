@@ -1,0 +1,119 @@
+﻿@model TempConsELearning.Models.Course
+
+@{
+    ViewBag.Title = "View";
+    Layout ="~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/MaterialiseCss/materialize.min.js"></script>
+<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<script src="~/Content/MaterialiseCss/materialize.js"></script>
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Course/InstructorData',
+            data: { id: @Model.InstructorId },
+            success: function (result) {
+                $("#InstructorData").html(result);
+            },
+            error: function () {
+                alert("something went wrong,with first Ajax Call");
+            }
+
+        });
+        $.ajax({
+            type: 'GET',
+            url: '/Course/_GetLectures',
+            data: { id: @Model.CourseId },
+            success: function (result) {
+                $("#jon").html(result);
+            },
+            error: function () {
+                alert("something went wrong with Getting Lectures");
+            }
+
+        });
+    });
+
+</script>
+<link href="~/Content/MaterialiseCss/materialize.css" rel="stylesheet" />
+<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<body class="body-content" style="margin-left:10px;">
+    
+     <h6> <font color="gray;">@Model.CourseFieldCategory</font> > @Model.CourseCategory</h6>
+
+
+    <div class="row" >
+   
+       
+     <div class="col s8">
+         <div class="row">
+             <div class="row s6" style="background-color:#505763;" >
+                 <div style="margin-left:4px;">
+                     <h2 style="font:bold; color:darkcyan;">@Model.CourseName</h2>
+                     <h4 style="color:cornflowerblue">@Model.CourseTitle</h4>
+                     <h6 style="color:#ffffff">@Model.Ratings &nbsp;&nbsp; @Model.NoOfStudentsEnrolled students enrolled</h6>
+                     <h6 style="color:#ffffff">Created By: @Model.Instructor.InstructorName &nbsp;&nbsp;&nbsp; <i class="small material-icons"> chat_bubble_outline</i>@Model.Language &nbsp;&nbsp;&nbsp; <i class="small material-icons">closed_caption</i> Language: @Model.Language</h6>
+                     <h6 style="color:#ffffff">@Model.CourseDescription</h6>
+                 <br />
+                 </div>
+             </div>
+             <div class="row s6" style="margin-left:4px;">
+                 <div>
+                     <h3>Description</h3>
+                     <p>
+                         @Model.CourseDescription
+                     </p>
+
+                     <div id="jon"> </div>
+                 </div>
+
+                 <div class="InstructorDiv">
+
+                     <h5>About The Instructor</h5>
+                     <div id="InstructorData">
+
+
+                     </div>
+                 </div>
+             </div> 
+         </div>
+        </div>
+        <!--<img src="~/Images/ref.jpg"  style=""/>-->
+        <div class="col s4">
+                    <div class="card" style="width:auto">
+                        <div class="card-image">
+                            <img src="@Url.Content(Model.CourseImage)" class="img-responsive">
+                            <span class="card-title">Preview this course</span>
+                        </div>
+                        <div class="card-content">
+                            <input type="button" value="Save Course" class="waves-button-input " />
+                            <input type="button" value="Enroll In" class="alert-success" />
+
+                            <p style="font-size:medium">
+                                <i class="Tiny material-icons">airplay</i> 123Videos <br />
+                                <i class="Tiny material-icons">layers</i>Full lifetime access<br />
+                                <i class="Tiny material-icons">developer_mode</i>Access on mobile and TV<br />
+                                <i class="Tiny material-icons">art_track</i>  Certificate of Completion    <br />
+                            </p>
+                            <br />
+                            <a href="#" class="center-align">&nbsp;&nbsp; Have a Coupon?</a>
+                            <hr />
+
+                            <a href="#" class="center"> &nbsp;&nbsp;&nbsp; <i class="tiny material-icons">keyboard_return</i> Share</a>
+                            <br />
+                        </div>
+                    </div>
+
+              
+             
+            </div>
+        </div>
+
+    
+        
+</body>

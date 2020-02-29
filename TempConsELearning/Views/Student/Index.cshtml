@@ -1,0 +1,195 @@
+﻿@model IEnumerable<TempConsELearning.Models.Course>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+
+
+
+@{
+    Layout = "~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+<link href="~/Content/MaterialiseCss/materialize.css" rel="stylesheet" />
+<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<script src="~/Content/MaterialiseCss/materialize.js"></script>
+<script src="~/Content/MaterialiseCss/materialize.min.js"></script>
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('.tabs').tabs();
+        $.ajax({
+            type: 'GET',
+            url: '/Course/_InstructorSlider',
+            success: function (result) {
+                $(".InstructorData").html(result);
+            },
+            error: function () {
+                alert("something went wrong With Instructor Data Loading Ajax Call");
+            }
+
+        });
+        var de = "IT & Software";
+        $.ajax({
+            type: 'GET',
+            url: '/Course/SpecificCourse',
+            data: { d :de},
+            success: function (result) {
+                $("#CourseData").html(result);
+            },
+            error: function () {
+                alert("something went wrong,with 1st Ajax Call");
+            }
+
+        });
+    });
+
+</script>
+
+
+
+<body class="body-content" style="background-color:#e3e8ef; margin-left:9px;margin-right:9px;">
+    <form action="~/Controllers/Course/Index" method="get">
+
+        <h4 style="font:#423838">The Top Trending Courses</h4>
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col s3" id="courseCard">
+                    <div class="card hoverable responsive-table">
+                        <div class="card-image">
+
+                            <img src="@Url.Content(item.CourseImage)" width="100px;" height="100px;" />
+                            <span class="card-title" style="font-size:small; color:fuchsia;">new</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s8">
+                                    <b><h5 style="font-size:large; font-style:italic; font-weight:bold;">@item.CourseName</h5></b>
+                                    <h6 style="font-size:small">@item.CourseTitle</h6>
+                                    <p style="font-size:small;">
+                                        @item.CourseFieldCategory <br />
+                                        @item.Language <br />
+
+                                        @for (int i = 0; i < item.Ratings; i++)
+                                        {
+                                            <i class="tiny material-icons">star</i>
+                                        } Ratings(@item.Ratings/5)
+
+                                    </p>
+                                </div>
+
+                                <div class="col s4">
+                                    @Html.ActionLink("View Details", "Alpha", new { id = item.CourseId })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+            <br />
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col s4" style="background-color:#e6ffe6;">
+                <br /><br /><br /><br /><br /><br /><br /><br />
+                <h6 style="text-align:center; font:xx-large;"> Our Top Courses</h6>
+
+                <p style="text-align:center;font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif; font-size:large;">
+                    Choose from over 80,000 online video courses with new additions published every month
+                </p><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+            <div class="col s8">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs responsive-table">
+                            <li class="tab col s3 active"><a id="tab1">IT & Software</a></li>
+
+                            <li class="tab col s3"> <a id="tab2">Personal Development</a> </li>
+                            <li class="tab col s3"><a id="tab3">Buisness</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div id="CourseData">
+
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <h4 style="margin-left:20px;"> Our Best Instructors</h4>
+        <div class="IntructorData">
+            @Html.Action("_InstructorSlider", "Course")
+        </div>
+
+    </form>
+</body>
+<script>
+
+    $("#tab1").click(function () {
+        //alert('inside 1');
+        var de = "IT & Software";
+        $.ajax({
+            type: 'GET',
+            url: '/Course/SpecificCourse',
+            data: {d:de},
+            success: function (result) {
+                $("#CourseData").html(result);
+            },
+            error: function () {
+                alert("something went wrong,with 1st Ajax Call");
+            }
+
+        });
+    });
+
+        $("#tab2").click(function () {
+         //   alert('inside 2');
+            var de = "Personal Development";
+            $.ajax({
+                type: 'GET',
+                url: '/Course/SpecificCourse',
+                data: {d:de},
+                success: function (result) {
+                    $("#CourseData").html(result);
+                },
+                error: function () {
+                    alert("something went wrong,with 1st Ajax Call");
+                }
+
+            });
+        });
+
+        $("#tab3").click(function () {
+            var de="Buisness";
+          //  alert('inside 3');
+            $.ajax({
+                type: 'GET',
+                url: '/Course/SpecificCourse',
+                data:{ d :de} ,
+                    success: function (result) {
+                        $("#CourseData").html(result);
+                    },
+                    error: function () {
+                        alert("something went wrong,with 1st Ajax Call");
+                    }
+
+                });
+
+
+
+    });
+
+
+
+
+
+
+</script>

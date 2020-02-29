@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+
+
+
+  <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="~/Content/MaterialiseCss/materialize.css" rel="stylesheet" />
+    <script src="~/Content/MaterialiseCss/materialize.js"></script>
+    <script src="~/Content/MaterialiseCss/materialize.min.js"></script>
+    <link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $(".dropdown-trigger").dropdown();
+        });
+        </script>
+    <script>
+        $("#search1").click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Course/Cart',
+                success: function (result) {
+                },
+                error: function () {
+                    alert("something went wrong,with first Ajax Call");
+                }
+           
+            });
+        });
+       /* function fac() {
+         
+           $.ajax({
+                type: 'GET',
+                url: '/Course/Index',
+                success: function (result) {
+                },
+                error: function () {
+                    alert("Error Going to Index");
+                }
+
+
+            });
+        }*/
+    </script>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    
+    <ul id="dropdown1" class="dropdown-content">
+        <li>@Html.ActionLink("Development", "SortBy", "Course", new { val = "Development" })</li>
+        <li>@Html.ActionLink("Business", "SortBy", "Course", new { val = "Business" })</li>
+        <li>@Html.ActionLink("IT & Software", "SortBy", new { val = "IT & Software" })</li>
+        <li>@Html.ActionLink("Office Productivity", "SortBy", "Course", new { val = "Office Productivity" })</li>
+        <li>@Html.ActionLink("Personal Development", "SortBy", "Course", new { val = "Personal Development" })</li>
+        <li>@Html.ActionLink("Design", "SortBy", "Course", new { val = "Design" })</li>
+        <li>@Html.ActionLink("Marketing", "SortBy", "Course", new { val = "Marketing" })</li>
+        <li>@Html.ActionLink("Lifestyle", "SortBy", "Course", new { val = "Lifestyle" })</li>
+        <li>@Html.ActionLink("Photography", "SortBy", "Course", new { val = "Photography" })</li>
+        <li>@Html.ActionLink("Health & Fitness", "SortBy", "Course", new { val = "Health & Fitness" })</li>
+        <li>@Html.ActionLink("Teacher Training", "SortBy", "Course", new { val = "Teacher Training" })</li>
+        <li>@Html.ActionLink("Music", "SortBy", "Course", new { val = "Music" })</li>
+        <li>@Html.ActionLink("Academics", "SortBy", "Course", new { val = "Academics" })</li>
+        <li>@Html.ActionLink("Language", "SortBy", "Course", new { val = "Language" })</li>
+        <li>@Html.ActionLink("Test Prep", "SortBy", "Course", new { val = "Test Prep" })</li>
+
+    </ul>
+    
+    <nav style="border-left:0px; width:100%; background-color:#5A7EB7;">
+        <div class="nav-wrapper hoverable responsive-img" style="border-left:0px; width:100%;">
+            @Html.ActionLink("ELearning", "Index", "Course", new { area = "" }, new { @class = "brand-logo" })
+
+             <ul class="right hide-on-med-and-down">
+                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="medium material-icons left">apps</i>Categories</a></li>
+                 <li>&nbsp;</li>
+                 
+                <li>
+              @using (Html.BeginForm("SortBy", "Course" ))
+              {
+                @Html.AntiForgeryToken()
+
+                          <div class="input-field" >
+                       
+                            <input id="val" name="val" type="search" required>
+                            <label class="label-icon srch" for="val"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+              }
+                </li>
+                <li>@Html.ActionLink("Saved Courses", "SavedCourses", "Student", new { area = "" }, new { @class = "navbar-brand" })</li>
+                 @if (User.Identity.Name.Equals("Instructor"))
+                 {
+                     <li>@Html.ActionLink("SignOut Here", "SignOut", "Instructor", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                 }
+                 else
+                 {
+                    <li>@Html.ActionLink("Become An Instructor", "Index", "Instructor", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                 }
+                 @if (User.Identity.Name.Equals("Student"))
+                 {
+                    <li>@Html.ActionLink("Sign Out", "SignOut", "Student", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                 }
+                 else { 
+                 <li>@Html.ActionLink("Sign In", "SignIn", "Student", new { area = "" }, new { @class = "navbar-brand" })</li>
+                 }
+            </ul>
+        </div>
+    </nav>
+</div>
+<div>
+    @RenderBody()
+</div>
+
+<footer class="page-footer" style="background-color:#5A7EB7; width:100%; padding-left:0px; padding-right:0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 >Learning Made Easy</h5>
+                <i class="medium material-icons">sort</i>
+                <i class="medium material-icons">sort_by_alpha</i>
+                <i class="medium material-icons">spa</i>
+
+                
+                 <br/>
+               
+             </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Social Media Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!"> Contact Us on Facebook <img class="circle circle responsive-img" src="~/Images/boy.jpg" width="15px;" height="20px;" /></a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Contact Us on Twitter <img class="circle circle responsive-img" src="~/Images/images.jpg" width="15px;" height="20px;" /></a></li>
+                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+          CopyRight  &copy; @DateTime.Now.Year
+            <a class="grey-text text-lighten-4 right" href="#!">Made By .....</a>
+        </div>
+    </div>
+</footer>
+
+    

@@ -1,0 +1,48 @@
+﻿@model TempConsELearning.Models.Instructor
+    @{
+
+        Layout = null;
+    }
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="col s12">
+    <div class="card" style="background-color:#ffffff">
+        <div class="card-content">
+
+            <div class="row">
+
+                <div class="col s3">
+                    <img src="@Url.Content(Model.Image)" width="60px;" height="60px;" class="circle responsive-img" />
+                </div>
+
+                <div class="col s9">
+                    <h6>
+                      Name:  <b><font color="#4d88ff">@Model.InstructorName</font></b>
+                    </h6>
+                    Ratings:
+                    @for (int i = 0; i < Model.Rating; i++)
+                    {
+                        <i class="small material-icons">star</i>
+                    }
+                </div>
+            </div>
+            <p class="rounded" style="font-size:medium;">
+                @Model.About
+                <br />
+               
+            </p>
+            <h5>Professional Degrees</h5>
+            <h6>
+                @Model.Degree1<br />
+                @Model.Degree2<br />
+                @Model.Degree3<br />
+            </h6>
+            <br />
+            <h6>Number OF Course Taught: @Model.NoOfCoursesTaught</h6>
+            @for (int i = 0; i < Model.NoOfCoursesTaught; i++)
+            {
+                <i class="small material-icons">event</i>
+            }
+
+        </div>
+    </div>
+</div>

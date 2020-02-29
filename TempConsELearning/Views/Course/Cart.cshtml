@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TempConsELearning.Models.Course>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+
+<h2>Cart</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ratings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfStudentsEnrolled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseFieldCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instructor.InstructorName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ratings)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfStudentsEnrolled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseFieldCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructor.InstructorName)
+        </td>
+    </tr>
+}
+
+</table>

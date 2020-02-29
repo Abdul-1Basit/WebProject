@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TempConsELearning.Models.Course>
+@{
+    ViewBag.Title = "ELearning";
+    Layout = "~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Course/_InstructorSlider',
+            success: function (result) {
+                $(".InstructorData").html(result);
+            },
+            error: function () {
+                alert("something went wrong With Instructor Data Loading Ajax Call");
+            }
+        });
+    });
+</script>
+
+<h5 style="font:#423838">Selected Category Results</h5>
+<div class="row">
+@foreach (var item in Model)
+{
+    <div class="col s3" id="courseCard">
+        <div class="card hoverable">
+            <div class="card-image">
+
+                    <img src="@Url.Content(item.CourseImage)" width="100px;" height="100px;" />
+                <span class="card-title" style="font-size:small; color:fuchsia;">new</span>
+            </div>
+            <div class="row">
+                <div class="card-content">
+                    <div class="col s8">
+                        <h6 style="font-size:small">@item.CourseTitle</h6>
+                        <p style="font-size:small;">
+                            @item.CourseFieldCategory <br />
+                            @item.Language <br />
+
+                            @for (int i = 0; i < item.Ratings; i++)
+                {
+                                <i class="small material-icons">star</i>
+                            }
+
+                        </p>
+                    </div>
+
+
+                    <div class="col s4">
+                        @Html.ActionLink("View Details", "Alpha", new { id = item.CourseId })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}</div>
+<br />
+
+
+<h5>Our Instructors</h5>
+<div class="InstructorData">
+
+</div>
+
+    

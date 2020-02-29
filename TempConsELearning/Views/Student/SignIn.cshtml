@@ -1,0 +1,46 @@
+﻿@model TempConsELearning.Models.Student
+
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+
+<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+<script src="~/Content/MaterialiseCss/materialize.min.js"></script>
+
+@using (Html.BeginForm("SignIn", "Student", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+    <div id="divpa">
+        <h2 style="color:red">@ViewBag.Error</h2>
+        <div class="card" style="border-left:10px; border-right:10px;">
+            <div class="card-image waves-effect waves-block waves-light responsive-img">
+                <img class="activator" src="~/Images/dlp.jpg" width="500px" height="500px">
+                <span class="card-title activator grey-text text-darken-4">
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <input id="StudentName" placeholder="Student Name" name="StudentName" type="text" class="validate">
+
+                        </div>
+                        <div class="input-field col s5">
+                            <input id="Password" type="password" placeholder="Password" name="Password" class="validate">
+
+                        </div>
+                        <div class="col s2"><input type="submit" value="SignIn" class="waves-effect waves-light btn" /> </div>
+
+
+
+                    </div>
+                    <div class="row">
+                        @Html.ActionLink("Sign Up", "SignUp", new { @class = "btn-block waves-effect waves-light btn", @style = "color:red;" })
+
+                    </div>
+                </span>
+            </div>
+
+
+
+        </div>
+
+    </div>
+}

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ELearningModelStoreContainer" CdmEntityContainer="ELearningEntitiesL">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="ELearningModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="NoOfLectures" ColumnName="NoOfLectures" />
+          <ScalarProperty Name="CourseImage" ColumnName="CourseImage" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseTitle" ColumnName="CourseTitle" />
+          <ScalarProperty Name="CourseDescription" ColumnName="CourseDescription" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+          <ScalarProperty Name="NoOfStudentsEnrolled" ColumnName="NoOfStudentsEnrolled" />
+          <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+          <ScalarProperty Name="CourseFieldCategory" ColumnName="CourseFieldCategory" />
+          <ScalarProperty Name="CourseCategory" ColumnName="CourseCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instructors">
+      <EntityTypeMapping TypeName="ELearningModel.Instructor">
+        <MappingFragment StoreEntitySet="Instructor">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Degree3" ColumnName="Degree3" />
+          <ScalarProperty Name="Degree2" ColumnName="Degree2" />
+          <ScalarProperty Name="Degree1" ColumnName="Degree1" />
+          <ScalarProperty Name="About" ColumnName="About" />
+          <ScalarProperty Name="NoOfStudents" ColumnName="NoOfStudents" />
+          <ScalarProperty Name="Reviews" ColumnName="Reviews" />
+          <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+          <ScalarProperty Name="InstructorName" ColumnName="InstructorName" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="NoOfCoursesTaught" ColumnName="NoOfCoursesTaught" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InstructorAssignments">
+      <EntityTypeMapping TypeName="ELearningModel.InstructorAssignment">
+        <MappingFragment StoreEntitySet="InstructorAssignment">
+          <ScalarProperty Name="InstructorAssignmentId" ColumnName="InstructorAssignmentId" />
+          <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lectures">
+      <EntityTypeMapping TypeName="ELearningModel.Lecture">
+        <MappingFragment StoreEntitySet="Lecture">
+          <ScalarProperty Name="VideoDesription" ColumnName="VideoDesription" />
+          <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
+          <ScalarProperty Name="VideoTitle" ColumnName="VideoTitle" />
+          <ScalarProperty Name="LectureId" ColumnName="LectureId" />
+          <ScalarProperty Name="LectureNo" ColumnName="LectureNo" />
+          <ScalarProperty Name="LectureTitle" ColumnName="LectureTitle" />
+          <ScalarProperty Name="LectureDescription" ColumnName="LectureDescription" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="ELearningModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="Biography" ColumnName="Biography" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentAssignments">
+      <EntityTypeMapping TypeName="ELearningModel.StudentAssignment">
+        <MappingFragment StoreEntitySet="StudentAssignment">
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

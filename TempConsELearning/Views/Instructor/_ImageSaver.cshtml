@@ -1,0 +1,16 @@
+﻿<link href="~/Content/MaterialiseCss/materialize.min.css" rel="stylesheet" />
+@using (Html.BeginForm("_ImageSaver", "Instructor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-group">
+  
+    <div class="col-md-10">
+        <input type="file" id="ImageFile" name="ImageFile" required />
+        <label for="ImageFile">Uploade Image</label>
+      </div>
+    <div class="col-md-offset-2">
+        <input type="submit" value="save Image"  class="btn-danger"/>
+    </div>
+</div>
+}

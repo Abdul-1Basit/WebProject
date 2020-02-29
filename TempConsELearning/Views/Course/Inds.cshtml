@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TempConsELearning.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MaterialiseLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    @foreach (var item in Model)
+    {
+
+        <div class="row">
+
+            <div class="col s3">
+                <img src="@item.CourseImage"/>
+            </div>
+            
+                <div class="col s9">
+                    <div class="row">
+                        <div class="col s8">
+                            <h4>@item.CourseTitle</h4>
+                            <p>
+                                <label id="courseLabel"></label> @item.NoOfLectures Lectures<br />
+                                @item.CourseDescription
+                            </p>
+                        </div>
+                            <div class="col s4">
+                                <h4>$12321.123</h4>
+                                <h5> @item.Ratings</h5>
+                                <h5>@item.CourseId</h5>
+                            </div>
+                    </div>
+            </div>
+        </div>
+        @Html.ActionLink("EDIT THIS COURSE","ViewCourse","Course", new {id=@item.CourseId })
+    }

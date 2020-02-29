@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TempConsELearning.Models.Course>
+    
+
+@foreach (var item in Model)
+{
+    <div class="col s3" id="courseCard">
+        <div class="card hoverable">
+            <div class="card-image">
+
+                <img src="@Url.Content(item.CourseImage)" width="100px;" height="100px;" />
+                <span class="card-title" style="font-size:small; color:fuchsia;">new</span>
+            </div>
+            <div class="card-content">
+                <h5 style="font-size:large; font-style:italic; font-weight:bold;">@item.CourseName</h5>
+                <h6 style="font-size:small">@item.CourseTitle</h6>
+                <p style="font-size:small;">
+                    @item.CourseFieldCategory <br />
+                    @item.Language <br />
+
+                    @for (int i = 0; i < item.Ratings; i++)
+                    {
+                        <i class="tiny material-icons">star</i>
+                    }Ratings(@item.Ratings/5)
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+}

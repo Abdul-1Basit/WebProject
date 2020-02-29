@@ -1,0 +1,35 @@
+﻿@model TempConsELearning.Models.Instructor
+
+<div class="row">
+    <div class="col s3">
+        
+        <img src="~/Images/boy.jpg" width="140" height="23" class="circle circle responsive-img" alt="@Model.InstructorName"/>
+        <br />
+        
+        <i class="tiny material-icons">email</i> @Model.Reviews Reviews
+        <br />
+
+        <i class="tiny material-icons">face</i> @Model.NoOfStudents Students
+        <br />
+
+        <i class="tiny material-icons">flag</i> @Model.NoOfCoursesTaught Courses
+        <br />
+
+
+
+    </div>
+    <div class="col s9">
+        <h4 style="color:lightskyblue;">@Model.InstructorName</h4><br /><br />
+        <h6>@Model.Profession</h6><br /><br />
+        <p>
+            @Model.About
+        </p>
+        <h6> Qualifications and Education</h6>
+        <p>
+            @Model.Degree1<br />
+            @Model.Degree2<br />
+            @Model.Degree3
+
+        </p>
+    </div>
+</div>
